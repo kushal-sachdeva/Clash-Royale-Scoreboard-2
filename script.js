@@ -5,7 +5,7 @@ import {
 } from './firebase.js';
 
 const SCORE_COOLDOWN_MS = 120000;
-the ARM_WINDOW_MS = 600000;
+const ARM_WINDOW_MS = 600000;
 
 const $ = (q)=>document.querySelector(q);
 const $$ = (q)=>document.querySelectorAll(q);
