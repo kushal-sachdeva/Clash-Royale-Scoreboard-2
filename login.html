@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clash Royale – Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container auth">
+  <h1>Clash Royale Scoreboard</h1>
+  <p class="subtitle">Sign in to join or create your group.</p>
+  <button id="google" class="button">Continue with Google</button>
+</div>
+<script type="module" src="firebase.js"></script>
+<script type="module">
+import { auth, db, provider, signInWithPopup, onAuthStateChanged, doc, setDoc, serverTimestamp } from './firebase.js';
+document.getElementById('google').addEventListener('click', async ()=>{
+  const res = await signInWithPopup(auth, provider);
+  const u = res.user;
+  await setDoc(doc(db,'users',u.uid),{ displayName:u.displayName||'', email:u.email||'', photoURL:u.photoURL||'', createdAt:serverTimestamp() },{merge:true});
+  location.href = 'index.html';
+});
+onAuthStateChanged(auth,(u)=>{ if(u) location.href='index.html'; });
+</script>
+</body>
+</html>

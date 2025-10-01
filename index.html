@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clash Royale Global Scoreboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header class="appbar">
+    <div class="left">
+      <h1>Clash Royale Scoreboard</h1>
+      <select id="groupSelect" class="input"></select>
+      <button id="newGroup" class="button secondary">New Group</button>
+      <button id="manageMembers" class="button secondary">Members</button>
+    </div>
+    <div class="right">
+      <img id="avatar" class="avatar" />
+      <button id="logout" class="button secondary">Logout</button>
+    </div>
+  </header>
+
+  <div class="topbar">
+    <select id="mode" class="input"></select>
+    <select id="playerA" class="input"></select>
+    <span class="small">vs</span>
+    <select id="playerB" class="input"></select>
+    <button id="add" class="button">Add Matchup</button>
+    <input id="search" class="input" type="search" placeholder="Search matchups" />
+  </div>
+
+  <div id="empty" class="small">No matchups yet. Add one above.</div>
+  <div id="list" class="grid"></div>
+
+  <hr />
+  <footer>A Kushal Sachdeva Production</footer>
+</div>
+
+<div id="toastBackdrop"></div>
+<div id="toast"></div>
+
+<div class="modal" id="groupModal">
+  <div class="modal-card">
+    <h3>Create Group</h3>
+    <input id="groupName" class="input" placeholder="Group name" />
+    <input id="groupModes" class="input" placeholder="Modes (comma-separated)" value="7x, Triple Draft, Mega Draft" />
+    <div class="modal-actions">
+      <button id="cancelGroup" class="button secondary">Cancel</button>
+      <button id="createGroup" class="button">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="membersModal">
+  <div class="modal-card">
+    <h3>Manage Members</h3>
+    <div id="membersList" class="list"></div>
+    <div class="row">
+      <input id="inviteEmail" class="input" placeholder="Invite by email" />
+      <select id="inviteRole" class="input">
+        <option value="editor">editor</option>
+        <option value="viewer">viewer</option>
+      </select>
+      <button id="inviteBtn" class="button">Invite</button>
+    </div>
+    <div class="modal-actions">
+      <button id="closeMembers" class="button secondary">Close</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+</html>
